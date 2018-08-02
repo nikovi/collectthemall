@@ -1,0 +1,61 @@
+<% include ../partials/header%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="card mb-3">
+                <img class="card-img-top" src="<%= figure.image %>" alt="<%= figure.name %>">
+                <div class="card-body">
+                    <div class="clearfix"></div>
+                    <p class="float-right">$<%= figure.price %></p>
+                    <h5 class="card-title"><%= figure.name %></h5>
+                    <p>
+                      <em>Submitted by: <%= figure.author.username %>, <%= moment(figure.createdAt).fromNow() %></em>
+                    </p>
+                    <hr>
+                    <p class="card-text"><%= figure.description %></p>
+                    <% if (currentUser && figure.author.id.equals(currentUser._id)) { %>
+                        <a class="btn btn-warning" href="/figures/<%= figure._id %>/edit">Edit</a>
+                        <form action="/figures/<%= figure._id %>?_method=DELETE" method="POST" class="delete-form">
+                          <button class="btn btn-danger">Delete</button>
+                        </form>
+                    <% } %>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-right">
+                        <a class="btn btn-success" href="/figures/<%= figure._id %>/comments/new">Add New Comment</a>
+                    </div>
+                    <hr>
+                    <div class="row">
+                    <% figure.comments.forEach(function(comment){ %>
+                    <div class="col-md-12 mb-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="float-left">
+                                    <p class="card-title"><%= comment.author.username %></p>
+                                    <p class="card-text"><%= comment.text %></p>
+                                </div>
+                                <div class="float-right">
+                                    <p><%= moment(comment.createdAt).fromNow() %></p>
+                          
+                                    <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                                    <div class="float-right">
+                                        <a href="/figures/<%=figure._id%>/comments/<%=comment._id%>/edit" class="btn btn-sm btn-warning">EDIT</a>
+                                        <form class="delete-form" action="/figures/<%=figure._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                                            <button class="btn btn-sm btn-danger">DELETE</button>
+                                        </form>
+                                    </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
+                    </div>
+                </div>
+            </div>
+</div>
+  
+<% include ../partials/footer%>

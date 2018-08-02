@@ -1,0 +1,35 @@
+<% include ../partials/header %>
+    
+    <div class="container">
+        
+        <header class="jumbotron">
+            <div class="container">
+                <h1>Welcome To Collect Them All!</h1>
+                <p>View and share figures with friends and the world</p>
+                <p>
+                    <a class="btn btn-primary btn-lg" href="/figures/new">Add new figure</a>
+                </p>
+            </div>           
+        </header>
+        
+        <div class="row text-center" id="figure-grid">
+            <%figures.forEach(function(figure){ %>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="card">
+                    <a href="/figures/<%= figure._id %>">
+                        <img class="card-img-top" src="<%= figure.image %>" alt="<%= figure.name %>">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title"><%= figure.name %></h5>
+                        <a href="/figures/<%= figure._id %>" class="btn btn-primary">View</a>
+                  </div>
+                </div>
+            
+            </div>
+            <% }); %>
+        </div>
+        
+    </div>
+   
+<% include ../partials/footer %>
+
