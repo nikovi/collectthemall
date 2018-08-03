@@ -5,7 +5,7 @@ html {
   min-height: 100%;
 }
 body {
-  
+  background: #333;
   margin-bottom: 60px;
 }
 .footer {
@@ -15,6 +15,10 @@ body {
   height: 60px;
   background-color: #f5f5f5;
   left: 0;
+}
+
+nav{
+  background: #ff9000!important;
 }
 
 .container .text-muted {
@@ -74,4 +78,8 @@ body {
 
 .sep{
   height: 20px;
+}
+
+.card{
+  border: none;
 }
