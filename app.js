@@ -14,7 +14,8 @@ var commentRoutes = require("./routes/comments");
 var figureRoutes = require("./routes/figures");
 var authRoutes = require("./routes/index");
     
-mongoose.connect("mongodb://localhost:27017/collectthemall",  { useNewUrlParser: true });
+//mongoose.connect("mongodb://localhost:27017/collectthemall",  { useNewUrlParser: true });
+mongoose.connect("mongodb://nicolas:madokami72@ds111492.mlab.com:11492/collectthemall",  { useNewUrlParser: true });
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
