@@ -41,6 +41,18 @@ nav{
 	display: inline-block;
 }
 
+.sep{
+  height: 20px;
+}
+
+.card{
+  border: none;
+}
+
+.logs{
+  color: white;
+}
+
 .flex-wrap {
   display:flex;
   flex-wrap: wrap;
@@ -76,10 +88,3 @@ nav{
   border-top-right-radius: 0;
 }
 
-.sep{
-  height: 20px;
-}
-
-.card{
-  border: none;
-}
